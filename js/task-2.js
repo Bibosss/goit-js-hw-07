@@ -28,13 +28,8 @@ const images = [
 
 const gallery = document.querySelector(".gallery");
 
-images.forEach((image) => {
-  const li = document.createElement("li");
-  const imageElement = document.createElement('img');
+const doc = images.map(image => {
+  return `<li><img src="${image.url}" alt="${image.alt}"></li>`;
+}).join("");
 
-  imageElement.src = image.url;
-  imageElement.alt = image.alt;
-
-  li.append(imageElement);
-  gallery.append(li);
-});
+gallery.insertAdjacentHTML("afterbegin", doc)
